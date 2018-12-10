@@ -36,7 +36,7 @@ You should see output similar to the following listing. Take a look at the listi
 +
 ====
 ----
-Using manifest file /Data/Customer/INCOMM/PAS-PCC-101-Workshop/cf-spring-mvc-boot/manifest.yml
+Using manifest file /Data/Workspace/workshop/PAS-100-Workshop/manifest.yml
 
 Updating app workshop in org pivot-makrishna / space development as makrishna@pivotal.io...
 OK
