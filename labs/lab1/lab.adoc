@@ -1,0 +1,150 @@
+= Lab 1 - From Zero to Pushing Your First Application
+
+== Target
+
+. If you haven't already, download the latest release of the Cloud Foundry CLI from https://github.com/cloudfoundry/cli/releases for your operating system and install it.
+
+. Set the API target for the CLI: (set appropriate end point for your environment)
++
+----
+$ cf api https://api.run.haas-69.pez.pivotal.io --skip-ssl-validation
+----
+
+. Login to Pivotal Cloudfoundry:
++
+----
+$ cf login
+----
++
+Follow the prompts
+
+== Push It!
+
+. Change to the _cf-spring-mvc-boot_ sample application directory:
++
+----
+$ cd ../../cf-spring-mvc-boot
+----
+
+. Push the application!
++
+----
+$ cf push
+----
++
+You should see output similar to the following listing. Take a look at the listing callouts for a play-by-play of what's happening:
++
+====
+----
+Using manifest file /Data/Customer/INCOMM/PAS-PCC-101-Workshop/cf-spring-mvc-boot/manifest.yml
+
+Updating app workshop in org pivot-makrishna / space development as makrishna@pivotal.io...
+OK
+
+Creating route workshop-mkrishna-dev.pcfbeta.io...
+OK
+
+Binding workshop-mkrishna-dev.pcfbeta.io to workshop...
+OK
+
+Uploading workshop...
+Uploading app files from: /var/folders/zk/nhxp0hlj21j3f3fsg7lkt8xh0000gn/T/unzipped-app744299864
+Uploading 843.4K, 146 files
+Done uploading               
+OK
+
+Starting app workshop in org pivot-makrishna / space development as makrishna@pivotal.io...
+Downloading nodejs_buildpack...
+Downloading php_buildpack...
+Downloading python_buildpack...
+Downloading go_buildpack...
+Downloading meta_buildpack...
+Downloaded meta_buildpack (9.5K)
+Downloading dotnet_core_buildpack...
+Downloaded nodejs_buildpack (134.9M)
+Downloading staticfile_buildpack...
+Downloaded staticfile_buildpack (6.8M)
+Downloading hwc_buildpack...
+Downloaded hwc_buildpack (8.2M)
+Downloading binary_buildpack...
+Downloaded binary_buildpack (3.5M)
+Downloading java_buildpack_offline...
+Downloaded python_buildpack (466.7M)
+Downloading ruby_buildpack...
+Downloaded java_buildpack_offline (361.8M)
+Downloaded dotnet_core_buildpack (955.1M)
+Downloaded go_buildpack (783.8M)
+Downloaded php_buildpack (567.6M)
+Downloaded ruby_buildpack (339.4M)
+Cell dd91c9ac-3a04-4058-8822-968a6c73edf6 creating container for instance cec6c99d-17e7-4dae-87bb-6233595c35ec
+Cell dd91c9ac-3a04-4058-8822-968a6c73edf6 successfully created container for instance cec6c99d-17e7-4dae-87bb-6233595c35ec
+Downloading app package...
+Downloaded app package (26.7M)
+-----> Java Buildpack v4.13.1 (offline) | https://github.com/cloudfoundry/java-buildpack.git#4644847
+-----> Downloading Jvmkill Agent 1.16.0_RELEASE from https://java-buildpack.cloudfoundry.org/jvmkill/trusty/x86_64/jvmkill-1.16.0_RELEASE.so (found in cache)
+-----> Downloading Open Jdk JRE 1.8.0_181 from https://java-buildpack.cloudfoundry.org/openjdk/trusty/x86_64/openjdk-1.8.0_181.tar.gz (found in cache)
+       Expanding Open Jdk JRE to .java-buildpack/open_jdk_jre (1.2s)
+       JVM DNS caching disabled in lieu of BOSH DNS caching
+-----> Downloading Open JDK Like Memory Calculator 3.13.0_RELEASE from https://java-buildpack.cloudfoundry.org/memory-calculator/trusty/x86_64/memory-calculator-3.13.0_RELEASE.tar.gz (found in cache)
+       Loaded Classes: 16168, Threads: 250
+-----> Downloading Client Certificate Mapper 1.6.0_RELEASE from https://java-buildpack.cloudfoundry.org/client-certificate-mapper/client-certificate-mapper-1.6.0_RELEASE.jar (found in cache)
+-----> Downloading Container Security Provider 1.14.0_RELEASE from https://java-buildpack.cloudfoundry.org/container-security-provider/container-security-provider-1.14.0_RELEASE.jar (found in cache)
+-----> Downloading Spring Auto Reconfiguration 2.4.0_RELEASE from https://java-buildpack.cloudfoundry.org/auto-reconfiguration/auto-reconfiguration-2.4.0_RELEASE.jar (found in cache)
+Exit status 0
+Uploading droplet, build artifacts cache...
+Uploading build artifacts cache...
+Uploading droplet...
+Uploaded build artifacts cache (132B)
+Uploaded droplet (72.8M)
+Uploading complete
+Cell dd91c9ac-3a04-4058-8822-968a6c73edf6 stopping instance cec6c99d-17e7-4dae-87bb-6233595c35ec
+Cell dd91c9ac-3a04-4058-8822-968a6c73edf6 destroying container for instance cec6c99d-17e7-4dae-87bb-6233595c35ec
+Cell dd91c9ac-3a04-4058-8822-968a6c73edf6 successfully destroyed container for instance cec6c99d-17e7-4dae-87bb-6233595c35ec
+
+0 of 1 instances running, 1 starting
+0 of 1 instances running, 1 starting
+1 of 1 instances running
+
+App started
+
+
+OK
+
+App workshop was started using this command `JAVA_OPTS="-agentpath:$PWD/.java-buildpack/open_jdk_jre/bin/jvmkill-1.16.0_RELEASE=printHeapHistogram=1 -Djava.io.tmpdir=$TMPDIR -Djava.ext.dirs=$PWD/.java-buildpack/container_security_provider:$PWD/.java-buildpack/open_jdk_jre/lib/ext -Djava.security.properties=$PWD/.java-buildpack/java_security/java.security $JAVA_OPTS" && CALCULATED_MEMORY=$($PWD/.java-buildpack/open_jdk_jre/bin/java-buildpack-memory-calculator-3.13.0_RELEASE -totMemory=$MEMORY_LIMIT -loadedClasses=16877 -poolType=metaspace -stackThreads=250 -vmOptions="$JAVA_OPTS") && echo JVM Memory Configuration: $CALCULATED_MEMORY && JAVA_OPTS="$JAVA_OPTS $CALCULATED_MEMORY" && MALLOC_ARENA_MAX=2 SERVER_PORT=$PORT eval exec $PWD/.java-buildpack/open_jdk_jre/bin/java $JAVA_OPTS -cp $PWD/. org.springframework.boot.loader.JarLauncher`
+
+Showing health and status for app workshop in org pivot-makrishna / space development as makrishna@pivotal.io...
+OK
+
+requested state: started
+instances: 1/1
+usage: 1G x 1 instances
+urls: workshop-mkrishna-dev.pcfbeta.io
+last uploaded: Tue Aug 21 01:08:04 UTC 2018
+stack: cflinuxfs2
+buildpack: client-certificate-mapper=1.6.0_RELEASE container-security-provider=1.14.0_RELEASE java-buildpack=v4.13.1-offline-https://github.com/cloudfoundry/java-buildpack.git#4644847 java-main java-opts java-security jvmkill-agent=1.16.0_RELEASE open-jd...
+
+     state     since                    cpu    memory         disk           details
+#0   running   2018-08-20 09:10:51 PM   0.0%   276.4M of 1G   155.2M of 1G
+----
+
+====
+
+. Visit the application in your browser by hitting the route that was generated by the CLI:
++
+image::lab-java.png[]
+
+== Interact with App from CF CLI
+
+. Get information about the currently deployed application using CLI apps command:
++
+----
+$ cf apps
+----
++
+Note the application name for next steps
+
+. Get information about running instances, memory, CPU, and other statistics using CLI instances command
++
+----
+$ cf app workshop
+----

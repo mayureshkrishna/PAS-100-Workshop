@@ -1,0 +1,15 @@
+= Pivotal Cloud Foundry 100 Workshop
+
+== Schedule
+
+This 2 hours hands-on classroom style session will provide developers with hands on experience with Pivotal Cloud Foundry concepts, architecture and fundamentals of pushing code and building applications. The session includes presentations, demos and hands on labs
+
+9:00 AM - 10:00 AM::
+ * Session 1: _PCF 2.2 Overview for App Dev_ 
+10:00 AM - 11:00 AM::
+ * Lab1: Pushing your first app, Apps Manager_
+
+== Course Materials
+
+* Developer Workshop
+** link:labs/lab1/lab.adoc[Lab 1 - From Zero to Pushing Your First Application]
