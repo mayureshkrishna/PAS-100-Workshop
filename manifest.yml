@@ -3,5 +3,4 @@ applications:
   memory: 1G
   instances: 1
   host: workshop-dev
-  random-route: true
   path: ./target/cf-spring-mvc-boot-0.0.1-SNAPSHOT.jar
