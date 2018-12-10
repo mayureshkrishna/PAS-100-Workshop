@@ -23,7 +23,7 @@ Follow the prompts
 . Change to the _cf-spring-mvc-boot_ sample application directory:
 +
 ----
-$ cd ../../cf-spring-mvc-boot
+$ cd ../../PAS-100-Workshop/
 ----
 
 . Push the application!
